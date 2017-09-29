@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>builder | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="builder pattern。翻译过来就是生成器模式，或者建造模式。  builder pattern 可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。  #####组成部分通常，builder模式有以下组成部分：  builder。一般为interface或者abstract class。用于规范builder的行为，同时提供一个返回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="builder">
+<meta property="og:url" content="http://yoursite.com/2017/09/29/builder-1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="builder pattern。翻译过来就是生成器模式，或者建造模式。  builder pattern 可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。  #####组成部分通常，builder模式有以下组成部分：  builder。一般为interface或者abstract class。用于规范builder的行为，同时提供一个返回">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7763096-f8a7eb7807948eb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-29T12:58:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="builder">
+<meta name="twitter:description" content="builder pattern。翻译过来就是生成器模式，或者建造模式。  builder pattern 可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。  #####组成部分通常，builder模式有以下组成部分：  builder。一般为interface或者abstract class。用于规范builder的行为，同时提供一个返回">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7763096-f8a7eb7807948eb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-builder-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/29/builder-1/" class="article-date">
+  <time datetime="2017-09-29T12:56:50.000Z" itemprop="datePublished">2017-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      builder
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>builder pattern。翻译过来就是生成器模式，或者建造模式。</p>
+<blockquote>
+<p>builder pattern 可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。</p>
+</blockquote>
+<p>#####组成部分<br>通常，builder模式有以下组成部分：</p>
+<ul>
+<li>builder。一般为interface或者abstract class。用于规范builder的行为，同时提供一个返回产品的方法。相当于产品经理提出的需求。</li>
+<li>builderA/builderB。builder的实现类，负责具体的产品实现。同时方便扩展。这就是我们程序员了，负责做实事，在规范内生产不同的产品。</li>
+<li>director。指导者。或者说它是产品经理，产品千变万化，可到了产品经理那都能统一生产。不和产品打交道，只拥抱需求。</li>
+<li>product。 产品。一般来说，是一个较为复杂的对象。</li>
+</ul>
+<p>#####使用场景</p>
+<blockquote>
+<ul>
+<li>当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时<ul>
+<li>当构造过程必须允许被构造的对象有不同的表示时。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h5><p><img src="http://upload-images.jianshu.io/upload_images/7763096-f8a7eb7807948eb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Builder Pattern"></p>
+<p>#####Demo<br>我们知道，一本书，一般由书名，作者，出版单位等组成。现在我们尝试通过builder模式创建两本书。</p>
+<ul>
+<li><p>product </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Data</span></div><div class="line"><span class="meta">@ToString</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookProduct</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String bookName;</div><div class="line">    <span class="keyword">private</span> String author;</div><div class="line">    <span class="keyword">private</span> String isbn;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>builder 规范书的生产过程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BookBuilder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bookName</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">author</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">isbn</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function">BookProduct <span class="title">build</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>builder 的实现类一，用于生产一本JVM书籍.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JVMBookBuilder</span> <span class="keyword">implements</span> <span class="title">BookBuilder</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> BookProduct product;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JVMBookBuilder</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product = <span class="keyword">new</span> BookProduct();</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bookName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product.setBookName(<span class="string">"深入理解Java虚拟机"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">author</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product.setAuthor(<span class="string">"周志明"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isbn</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product.setIsbn(<span class="string">"9787111421900"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> BookProduct <span class="title">build</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> product;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>builder 的实现类二。用于生产spring cloud书籍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringCloudBookBuilder</span> <span class="keyword">implements</span> <span class="title">BookBuilder</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> BookProduct product;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SpringCloudBookBuilder</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product = <span class="keyword">new</span> BookProduct();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bookName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product.setBookName(<span class="string">"Spring Cloud微服务实战"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">author</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product.setAuthor(<span class="string">"翟永超"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isbn</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.product.setIsbn(<span class="string">"9787121313011"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> BookProduct <span class="title">build</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> product;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>现在轮到我们的产品经理出场了。Director一般持有Builder实例。在生产时，根据实际实现类，生产对应的product。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookDirector</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> BookBuilder builder;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BookDirector</span><span class="params">(BookBuilder builder)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.builder = builder;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> BookProduct <span class="title">build</span><span class="params">()</span> </span>&#123;</div><div class="line">        builder.bookName();</div><div class="line">        builder.author();</div><div class="line">        builder.isbn();</div><div class="line">        <span class="keyword">return</span> builder.build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>最后便是我们的上帝，来验证产品。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//jvm</span></div><div class="line">        JVMBookBuilder proseArticleBuilder = <span class="keyword">new</span> JVMBookBuilder();</div><div class="line">        BookDirector director = <span class="keyword">new</span> BookDirector(proseArticleBuilder);</div><div class="line">        System.out.println(director.build().toString());</div><div class="line"></div><div class="line">        <span class="comment">//spring cloud</span></div><div class="line">        SpringCloudBookBuilder argumentBuilder = <span class="keyword">new</span> SpringCloudBookBuilder();</div><div class="line">        director = <span class="keyword">new</span> BookDirector(argumentBuilder);</div><div class="line">        System.out.println(director.build().toString());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>so you can see </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BookProduct(bookName=深入理解Java虚拟机, author=周志明, isbn=9787111421900)</div><div class="line">BookProduct(bookName=Spring Cloud微服务实战, author=翟永超, isbn=9787121313011)</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://github.com/nonlatepavilion/basics/tree/master/basic/src/main/java/top/non/late/pavilion/basic/java/designs/builder/code" target="_blank" rel="external">完整示例代码</a></p>
+</li>
+</ul>
+<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><p><a href="https://en.wikipedia.org/wiki/Builder_pattern" target="_blank" rel="external">wiki</a><br><a href="https://my.oschina.net/xianggao/blog/649893" target="_blank" rel="external">oschina</a></p>
+<p>·</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/29/builder-1/" data-id="cj85wbujo00007yu89ajy00q5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/29/builder/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/29/builder-1/">builder</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/29/builder/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/29/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
